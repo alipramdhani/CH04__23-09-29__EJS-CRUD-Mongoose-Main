@@ -1,5 +1,6 @@
 const fs = require("fs")
 const Tour = require(".././models/tourModel")
+const { name } = require("ejs")
 
 const createTour = async (req, res) => {
   try {
@@ -21,7 +22,24 @@ const createTour = async (req, res) => {
 
 const getAllTours = async (req, res) => {
   try {
-    const tours = await Tour.find()
+    const { price, name } = req.query
+
+    // const tours = await Tour.find({
+    //   price: req.query.price,
+    // })
+
+    const condition = {}
+    if (price)
+      condition.price = { $gt: req.query.price }
+    if (name)
+      condition.name = {
+        $regex: ".*" + name.toLowerCase() + ".*",
+      }
+
+    const tours = await Tour.find().where(
+      condition
+    )
+
     res.status(200).json({
       status: "success",
       requestTime: req.requestTime,
