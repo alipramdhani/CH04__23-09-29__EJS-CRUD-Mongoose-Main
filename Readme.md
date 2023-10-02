@@ -4,7 +4,7 @@ KALIAN BIKIN :
 2. kalian bikin dokumentasi api dan project kalian nya di readme.md
 
 ini database diagram dari challenge avavw :
-![Alt text](dbdiagram.io---diagram-only.png)
+![Alt text](public/img/dbdiagram.io---diagram-only.png)
 
 api di challenge ini :
 
